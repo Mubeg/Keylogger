@@ -1,0 +1,1 @@
+tlink /t keylogge.obj ramka.obj scan_cod.obj
