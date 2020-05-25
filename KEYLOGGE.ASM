@@ -5,6 +5,8 @@ org 100h
 extrn draw_ramka:proc
 extrn scan_code_to_ascii:proc
 
+color	= 6eh	; 0 - black background; e - yellow foreground
+
 start:
 
 	mov ax, 0h
@@ -35,7 +37,7 @@ start:
 	mov ax, cs
 	stosw
 
-	int 09h		; debug check
+;	int 09h		; debug check
 	jmp stay_resident
 
 int_09_keyboard_replace:
@@ -75,11 +77,13 @@ int_08_timer_replace:
 		
 		mov ax, 0h
 		mov bx, 0303h
-		mov cx, 000eh
+		mov ch, 0h
+		mov cl, color
 		call draw_ramka
 
 		db 0bbh			; mov bx, ...
-last_key:	dw 0eadh		; 'global' var
+last_key:	db 0adh
+		db color			; 'global' var [0adh | color]
 
 		mov ax, 0b800h		
 		mov es, ax

@@ -37,8 +37,8 @@ return:
 	ret
 	endp
 .data
-no_shifted_ascii: 	db ' 1234567890-+  qwertyuiop[]  asdfghjkl;"` \zxcvbnm,./ *              789 456 1230.'
-shifted_ascii:		db ' !@#$%^&*()_=  QWERTYUIOP{}  ASDFGHJKL:', 27h,'~ |ZXCVBNM<>?                789 456 1230.'
+no_shifted_ascii: 	db ' 1234567890-+  qwertyuiop[]  asdfghjkl;"` \zxcvbnm,./ *               789 456 1230.'
+shifted_ascii:		db ' !@#$%^&*()_=  QWERTYUIOP{}  ASDFGHJKL:', 27h,'~ |ZXCVBNM<>?                 789 456 1230.'
 
 end	start
 
