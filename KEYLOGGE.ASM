@@ -5,7 +5,7 @@ org 100h
 extrn draw_ramka:proc
 extrn scan_code_to_ascii:proc
 
-color	= 6eh	; 0 - black background; e - yellow foreground
+color	= 0eh	; 0 - black background; e - yellow foreground
 
 start:
 
@@ -26,16 +26,20 @@ start:
 	mov di, 08*4h
 	mov ax, 0h
 	mov es, ax
+	cli
 
 	mov ax, offset int_08_timer_replace
 	stosw	
 	mov ax, cs
 	stosw
 
+
 	mov ax, offset int_09_keyboard_replace
 	stosw
 	mov ax, cs
 	stosw
+	
+	sti
 
 ;	int 09h		; debug check
 	jmp stay_resident
